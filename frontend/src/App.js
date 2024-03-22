@@ -42,7 +42,7 @@ function App() {
     <Container>
     <Title>USUÁRIOS</Title>
     <Form />
-    <Grid users={users} />
+    <Grid users={users} setUsers={setUsers} />
       </Container>
     <ToastContainer autoClose={3000} position={'bottom-left'} />
     <GlobalStyle />      
