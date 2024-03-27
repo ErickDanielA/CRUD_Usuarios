@@ -41,8 +41,9 @@ function App() {
     <>
     <Container>
     <Title>USUÁRIOS</Title>
-    <Form />
-    <Grid users={users} setUsers={setUsers} />
+    <Form onEdit={onEdit} setOnEdit={setOnEdit} getUsers={getUsers} />
+    
+    <Grid users={users} setUsers={setUsers} setOnEdit={setOnEdit} />
       </Container>
     <ToastContainer autoClose={3000} position={'bottom-left'} />
     <GlobalStyle />      
