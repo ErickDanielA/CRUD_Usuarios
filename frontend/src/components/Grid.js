@@ -41,7 +41,12 @@ export const Td = styled.td`
     }
 `;
 
-const Grid = ({ users, SetUsers }) => {
+const Grid = ({ users, SetUsers, setOnEdit }) => {
+
+
+    const handleEdit = (item) => {
+        setOnEdit(item);
+    };
 
     const handleDelete = async (id) => {
         await axios
@@ -76,10 +81,10 @@ const Grid = ({ users, SetUsers }) => {
                         <Td width="30%">{item.email}</Td>
                         <Td width="20%" onlyWeb>{item.fone}</Td>
                         <Td alignCenter width="5%">
-                            <FaEdit />
+                            <FaEdit onClick={() => handleEdit(item)} />
                         </Td>
                         <Td alignCenter width="5%">
-                            <FaTrash onClick={() => handDelete(item.id)} />
+                            <FaTrash onClick={() => handleDelete(item.id)} />
                         </Td>
                     </Tr>
                 ))}
