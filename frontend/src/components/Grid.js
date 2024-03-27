@@ -41,7 +41,7 @@ export const Td = styled.td`
     }
 `;
 
-const Grid = ({ users }) => {
+const Grid = ({ users, SetUsers }) => {
 
     const handleDelete = async (id) => {
         await axios
