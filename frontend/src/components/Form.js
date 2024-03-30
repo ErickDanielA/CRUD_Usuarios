@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import styled from "styled-components";
+import { toast } from "react-toastify";
 
 const FormContainer = styled.form`
     display: flex;
@@ -62,12 +63,19 @@ const Form = ({ onEdit }) => {
             !user.fone.value ||
             !user.data_nascimento.value
         ) {
-            return TransformStream.warn("Preencha todos os campos");
+            return toast.warn("Preencha todos os campos");
         }
 
         if  (onEdit) {
             await axios
-            .put("http//localhoste:")
+            .put("http//localhoste:8800/"+ onEdit.id, {
+                nome: user.nome.value,
+                email: user.email.value,
+                fone: user.fone.value,
+                data_nascimento: user.data_nascimento.value,
+            })
+            .then(({ data }) => toast.success(data))
+            .catch(({ data }) => toast.error(data));
         }
     };
 
