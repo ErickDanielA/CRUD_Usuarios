@@ -41,7 +41,7 @@ export const Td = styled.td`
     }
 `;
 
-const Grid = ({ users, SetUsers, setOnEdit }) => {
+const Grid = ({ users, setUsers, setOnEdit }) => {
 
 
     const handleEdit = (item) => {

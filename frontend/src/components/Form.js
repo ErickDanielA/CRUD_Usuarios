@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import styled from "styled-components";
 import { toast } from "react-toastify";
+import axios from "axios";
 
 const FormContainer = styled.form`
     display: flex;
@@ -38,16 +39,16 @@ const Button = styled.button`
     height: 42px;
     `;
 
-const Form = ({ onEdit }) => {
+const Form = ({ getUsers, onEdit, setOnEdit }) => {
     const ref = useRef();
 
     useEffect(() => {
         if (onEdit) {
             const user = ref.current;
 
-            !user.nome.value = onEdit.nome;
-            !user.email.value = onEdit.email;
-            !user.fone.value = onEdit.fone;
+            user.nome.value = onEdit.nome;
+            user.email.value = onEdit.email;
+            user.fone.value = onEdit.fone;
             user.data_nascimento.value = onEdit.data_nascimento;
         }
     }, [onEdit]);
@@ -76,7 +77,26 @@ const Form = ({ onEdit }) => {
             })
             .then(({ data }) => toast.success(data))
             .catch(({ data }) => toast.error(data));
+        } else {
+            await axios
+            .post("http//localhost:8800/", {
+                nome: user.nome.value,
+                email: user.email.value,
+                fone: user.fone.value,
+                data_nascimento: user.data_nascimento.value,
+            })
+            .then(({ data }) => toast.success(data))
+            .catch(({ data }) => toast.error(data));
         }
+
+        user.nome.value = "";
+        user.email.value = "";
+        user.fone.value = "";
+        user.data_nascimento.value = "";
+
+        setOnEdit(null);
+        getUsers();
+
     };
 
     return (
@@ -91,7 +111,7 @@ const Form = ({ onEdit }) => {
             </InputArea>
             <InputArea>
                 <Label>Telefone</Label>
-                <Input name="telefone" />
+                <Input name="fone" />
             </InputArea>
             <InputArea>
                 <Label>Data de Nascimento</Label>
