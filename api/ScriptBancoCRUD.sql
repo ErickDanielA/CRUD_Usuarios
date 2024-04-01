@@ -9,6 +9,5 @@ create table usuarios(
 );
 
 INSERT INTO usuarios (`nome`, `email`, `fone`, `data_nascimento`) VALUES ('will', 'wil@gmail.com', '987546325', '2000-11-09');
-INSERT INTO usuarios (`nome`, `email`, `fone`, `data_nascimento`) VALUES ('Erick', 'erick@gmail.com', '211244124', '2000-11-09');
 
 select * from crud_node_usuarios.usuarios;
