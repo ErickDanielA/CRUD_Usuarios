@@ -1,7 +1,7 @@
 import GlobalStyle from "./styles/global.js";
 import styled from "styled-components";
-import Form from "./components/Form.js"
-import Grid from "./components/Grid.js"
+import Form from "./components/Form.js";
+import Grid from "./components/Grid.js";
 import { useEffect, useState } from "react";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -40,7 +40,7 @@ function App() {
   return (
     <>
     <Container>
-    <Title>USUÁRIOS</Title>
+    <Title>Produtos</Title> 
     <Form onEdit={onEdit} setOnEdit={setOnEdit} getUsers={getUsers} />
     
     <Grid users={users} setUsers={setUsers} setOnEdit={setOnEdit} />
